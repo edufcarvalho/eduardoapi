@@ -47,9 +47,6 @@ http.createServer((request, response) => {
             }
 
             response.write(JSON.stringify(data, null, beautify));
-
-            // console.log();
-            // console.log(params.get('query').test(queryRegex));
         } else {
             response.write(JSON.stringify(eduardo, null, beautify));
         }
