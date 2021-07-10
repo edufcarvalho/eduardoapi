@@ -16,7 +16,7 @@ http.createServer((request, response) => {
     }
 
     /* if flag &beautify=true is provided, start beautify to allow
-    tabulation on JSON.stringfy() */
+    tabulation on JSON.stringify() */
     const beautify = params.get('beautify') == 'true' ? '\t' : null;
 
     if (params.has('/api')) {
