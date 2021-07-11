@@ -12,6 +12,7 @@ This is a **dead simple web server** that uses only node [HTTP](https://nodejs.o
 Before cloning, inside the project directory:
 
 - Simple set up:
+
   - Without docker (only [node.js](https://nodejs.org/en/) required):
     ```sh
     node app.js
@@ -23,6 +24,7 @@ Before cloning, inside the project directory:
       npm start
     ```
 - Live deloyment set up (*all changes saved in project files reload the server*):
+
     - Without docker ([npm](https://www.npmjs.com/) and [nodemon](https://www.npmjs.com/package/nodemon) required):
         ```sh
         npm run start:dev
