@@ -19,57 +19,47 @@ http.createServer((request, response) => {
     tabulation on JSON.stringify() */
     const beautify = params.get('beautify') == 'true' ? '\t' : null;
 
-    if (params.has('/api')) {
-        const data = {};
+    /* output JSON */
+    const output = {
+        success: true,
+        data: {}
+    };
 
+    if (params.has('/api')) {
         if (params.has('query')) {
             /* iterate through all passed queries searching for invalid keys,
             if a key is invalid, send user a error message in the form of a JSON*/
             for (key of params.get('query').split(',')) {
                 if (eduardo.hasOwnProperty(key)) {
-                    data[key] = eduardo[key];
+                    output.data[key] = eduardo[key];
                 } else {
-                    response.write(
-                        JSON.stringify(
-                            {
-                                success: false,
-                                error: {
-                                    code: 202,
-                                    type: 'invalid_query',
-                                    info: `Invalid query provided. Valid queries: ${Object.keys(
-                                        eduardo
-                                    ).join()}`
-                                }
-                            },
-                            null,
-                            beautify
-                        )
-                    );
-                    response.end();
+                    output.success = false;
+                    output.error = {
+                        code: 202,
+                        type: 'invalid_query',
+                        info: `Invalid query provided. Valid queries: ${Object.keys(
+                            eduardo
+                        ).join()}`
+                    };
+
+                    delete output.data;
                 }
             }
-
-            response.write(JSON.stringify(data, null, beautify));
         } else {
-            response.write(JSON.stringify(eduardo, null, beautify));
+            output.data = eduardo;
         }
     } else {
-        response.write(
-            JSON.stringify(
-                {
-                    success: false,
-                    error: {
-                        code: 202,
-                        type: 'invalid_endpoint',
-                        info: `Invalid endpoint provided. Consult documentation for further information.`
-                    }
-                },
-                null,
-                beautify
-            )
-        );
+        output.success = false;
+        output.error = {
+            code: 202,
+            type: 'invalid_endpoint',
+            info: `Invalid endpoint provided. Consult documentation for further information.`
+        };
+
+        delete output.data;
     }
 
+    response.write(JSON.stringify(output, null, beautify));
     response.end();
 }).listen(port, () => {
     console.log(`Listening on port ${port}`);
