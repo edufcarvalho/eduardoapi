@@ -43,6 +43,7 @@ http.createServer((request, response) => {
                     };
 
                     delete output.data;
+                    break;
                 }
             }
         } else {
