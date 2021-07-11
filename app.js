@@ -44,8 +44,8 @@ http.createServer((request, response) => {
                 if (eduardo.hasOwnProperty(key)) {
                     output.data[key] = eduardo[key];
                 } else {
-                    /* If query is empty, return default value (all data output)*/
-                    if (params.get('query') == '') {
+                    /* If query is empty, return default value (all data output) */
+                    if (params.get('query') == '' || params.get('query') == 'all') {
                         output.data = eduardo;
                     } else {
                         writeErrorToOutput(
@@ -69,8 +69,7 @@ http.createServer((request, response) => {
             output,
             (code = 202),
             (type = 'invalid_endpoint'),
-            (info =
-                'Invalid endpoint used. Consult documentation for further information.')
+            (info = 'Invalid endpoint used. Consult documentation for further information.')
         );
     }
 
