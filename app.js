@@ -38,15 +38,15 @@ http.createServer((request, response) => {
         if (params.has('query')) {
             const query = params.get('query');
 
-            /* iterate through all passed queries searching for invalid keys,
-            if a key is invalid, send user a error message in the form of a JSON*/
-            for (key of query.split(',')) {
-                if (eduardo.hasOwnProperty(key)) {
-                    output.data[key] = eduardo[key];
-                } else {
-                    /* If query is empty, return default value (all data output) */
-                    if (query == '' || query == 'all') {
-                        output.data = eduardo;
+            /* If query is empty or all, return default value (all data output) */
+            if (query == '' || query == 'all') {
+                output.data = eduardo;
+            } else {
+                /* iterate through all passed queries searching for invalid keys,
+                if a key is invalid, send user a error message in the form of a JSON*/
+                for (key of query.split(',')) {
+                    if (eduardo.hasOwnProperty(key)) {
+                        output.data[key] = eduardo[key];
                     } else {
                         writeErrorToOutput(
                             output,
@@ -56,9 +56,9 @@ http.createServer((request, response) => {
                                 eduardo
                             ).join()}`)
                         );
-                    }
 
-                    break;
+                        break;
+                    }
                 }
             }
         } else {
