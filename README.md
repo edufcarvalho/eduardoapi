@@ -42,7 +42,7 @@ Before cloning, inside the project directory:
 
 Except if your environment has an defined port, the server will default to port 8888, and the default endpoint will be:
 
-- `localhost:8888\api`, that will return all author's stored data
+- `localhost:8888/api`, that will return all author's stored data
 
 Any other endpoints will give user a default endpoint error message.
 
@@ -61,7 +61,7 @@ Any other endpoints will give user a default endpoint error message.
     `&beautify=<option>`.
 
   - Example: <br>
-    `localhost:8888\api&beautify=true`, will return all author's data with tabulation.
+    `localhost:8888/api&beautify=true`, will return all author's data with tabulation.
 
 - #### Query:
 
@@ -91,6 +91,6 @@ Any other endpoints will give user a default endpoint error message.
     - `all` can not be called with any other argument and need to respect the previous note.
 
   - Examples: <br>
-    `localhost:8888\api&query=name`, will return just author's complete name.
-    `localhost:8888\api&query=name,email`, will return author's complete name and email.
-    `localhost:8888\api&query=all`, will return all data.
+    `localhost:8888/api&query=name`, will return just author's complete name.
+    `localhost:8888/api&query=name,email`, will return author's complete name and email.
+    `localhost:8888/api&query=all`, will return all data.
