@@ -85,10 +85,10 @@ Any other endpoints will give user a default endpoint error message.
   - Usage: <br>
     `&query=<args>`
 
-  - Notes:
-    - Multiple arguments are supported, like `&query=name,email`;
-    - `&query=<option>,`, `&query=name,` i.e, is considered bad syntax and will return error with no data;
-    - `all` can not be called with any other argument and need to respect the previous note.
+  - Notes: <br>
+    1 - Multiple arguments are supported, like `&query=name,email`; <br>
+    2 - `&query=<option>,`, `&query=name,` i.e, is considered bad syntax and will return error with no data; <br>
+    3 - `all` can not be called with any other argument and need to respect the previous note.
 
   - Examples: <br>
     `localhost:8888/api&query=name`, will return just author's complete name.
