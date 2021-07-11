@@ -44,14 +44,19 @@ http.createServer((request, response) => {
                 if (eduardo.hasOwnProperty(key)) {
                     output.data[key] = eduardo[key];
                 } else {
-                    writeErrorToOutput(
-                        output,
-                        (code = 202),
-                        (type = 'invalid_query'),
-                        (info = `Invalid query provided. Valid queries: ${Object.keys(
-                            eduardo
-                        ).join()}`)
-                    );
+                    /* If query is empty, return default value (all data output)*/
+                    if (params.get('query') == '') {
+                        output.data = eduardo;
+                    } else {
+                        writeErrorToOutput(
+                            output,
+                            (code = 202),
+                            (type = 'invalid_query'),
+                            (info = `Invalid query provided. Valid queries: ${Object.keys(
+                                eduardo
+                            ).join()}`)
+                        );
+                    }
 
                     break;
                 }
