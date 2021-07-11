@@ -60,6 +60,9 @@ Any other endpoints will give user a default endpoint error message.
   - Usage: <br>
     `&beautify=<option>`.
 
+  - Example: <br>
+    `localhost:8888\api&beautify=true`, will return all author's data with tabulation.
+
 - #### Query:
 
   Query define required data (API normally return all stored data) and can receive multiple arguments.
@@ -86,3 +89,8 @@ Any other endpoints will give user a default endpoint error message.
     - Multiple arguments are supported, like `&query=name,email`;
     - `&query=<option>,`, `&query=name,` i.e, is considered bad syntax and will return error with no data;
     - `all` can not be called with any other argument and need to respect the previous note.
+
+  - Examples: <br>
+    `localhost:8888\api&query=name`, will return just author's complete name.
+    `localhost:8888\api&query=name,email`, will return author's complete name and email.
+    `localhost:8888\api&query=all`, will return all data.
