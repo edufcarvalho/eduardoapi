@@ -94,3 +94,6 @@ Any other endpoints will give user a default endpoint error message.
     `localhost:8888/api&query=name`, will return just author's complete name.
     `localhost:8888/api&query=name,email`, will return author's complete name and email.
     `localhost:8888/api&query=all`, will return all data.
+
+- Observation: <br>
+  Both functions can be used together, `localhost:888/api&query=all&beautify=true` i.e.
