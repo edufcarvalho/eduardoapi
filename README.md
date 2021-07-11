@@ -19,9 +19,9 @@ Before cloning, inside the project directory:
     ```
   - With docker (only [docker](https://www.docker.com) required):
     ```sh
-      docker build - < Dockerifile -t eduardoapi/app:latest
-      docker run -it --rm -p 8888:8888 -v $(pwd):/app -w="/app" eduardoapi/app:latest /bin/bash
-      npm start
+    docker build - < Dockerifile -t eduardoapi/app:latest
+    docker run -it --rm -p 8888:8888 -v $(pwd):/app -w="/app" eduardoapi/app:latest /bin/bash
+    npm start
     ```
 - Live deloyment set up (*all changes saved in project files reload the server*):
 
