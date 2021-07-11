@@ -6,6 +6,17 @@ const port = process.env.PORT || 8888;
 
 const eduardo = JSON.parse(fs.readFileSync('eduardo.json', 'utf-8'));
 
+const writeErrorToOutput = (output, code, errorType, errorDescription) => {
+    output.success = false;
+    output.error = {
+        code: code,
+        type: errorType,
+        info: errorDescription
+    };
+
+    delete output.data;
+};
+
 http.createServer((request, response) => {
     const params = new URLSearchParams(request.url);
 
@@ -33,16 +44,15 @@ http.createServer((request, response) => {
                 if (eduardo.hasOwnProperty(key)) {
                     output.data[key] = eduardo[key];
                 } else {
-                    output.success = false;
-                    output.error = {
-                        code: 202,
-                        type: 'invalid_query',
-                        info: `Invalid query provided. Valid queries: ${Object.keys(
+                    writeErrorToOutput(
+                        output,
+                        (code = 202),
+                        (type = 'invalid_query'),
+                        (info = `Invalid query provided. Valid queries: ${Object.keys(
                             eduardo
-                        ).join()}`
-                    };
+                        ).join()}`)
+                    );
 
-                    delete output.data;
                     break;
                 }
             }
@@ -50,14 +60,13 @@ http.createServer((request, response) => {
             output.data = eduardo;
         }
     } else {
-        output.success = false;
-        output.error = {
-            code: 202,
-            type: 'invalid_endpoint',
-            info: `Invalid endpoint provided. Consult documentation for further information.`
-        };
-
-        delete output.data;
+        writeErrorToOutput(
+            output,
+            (code = 202),
+            (type = 'invalid_endpoint'),
+            (info =
+                'Invalid endpoint used. Consult documentation for further information.')
+        );
     }
 
     response.write(JSON.stringify(output, null, beautify));
