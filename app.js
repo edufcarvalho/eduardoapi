@@ -53,7 +53,7 @@ http.createServer((request, response) => {
                 } else {
                     /* iterate through all passed queries searching for invalid keys,
                     if a key is invalid, send user a error message in the form of a JSON*/
-                    for (key of query.split(',')) {
+                    for (const key of query.split(',')) {
                         if (eduardo.hasOwnProperty(key)) {
                             output.data[key] = eduardo[key];
                         } else {
