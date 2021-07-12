@@ -19,9 +19,8 @@ Before cloning, inside the project directory:
     ```
   - With docker (only [docker](https://www.docker.com) required):
     ```sh
-    docker build - < Dockerifile -t eduardoapi/app:latest
-    docker run -it --rm -p 8888:8888 -v $(pwd):/app -w="/app" eduardoapi/app:latest /bin/bash
-    npm start
+    docker build . --rm -t eduardoapi/app
+    docker run --init eduardoapi/app
     ```
 - Live deloyment set up (*all changes saved in project files reload the server*):
 
@@ -29,11 +28,11 @@ Before cloning, inside the project directory:
         ```sh
         npm run start:dev
         ```
-    - With docker (only [docker](https://www.docker.com/) required):
+    - With docker (only [docker](https://www.docker.com/) required): <br>
+      *if you want to live deploy you need to open the container inside your editor or changes will not count* <br>
       ```sh
-      docker build - < Dockerifile -t eduardoapi/app:latest
-      docker run -it --rm -p 8888:8888 -v $(pwd):/app -w="/app" eduardoapi/app:latest /bin/bash
-      npm run start:dev
+      docker build . --rm -t eduardoapi/app
+      docker run --init eduardoapi/app start:dev
       ```
 
 ## Endpoint and functions
