@@ -5,7 +5,7 @@
     "main": "app.js",
     "scripts": {
         "start": "node app.js",
-        "start:dev": "nodemon -L app.js"
+        "start:dev": "npx nodemon"
     },
     "keywords": [
         "api",

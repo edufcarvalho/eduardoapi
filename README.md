@@ -22,20 +22,20 @@ Before cloning, inside the project directory:
     docker build . --rm -t eduardoapi/app
     docker run --init eduardoapi/app
     ```
-- Live deloyment set up (*all changes saved in project files reload the server*):
+- Live deployment set up (*all changes saved in project files reload the server*):
 
-    - Without docker ([npm](https://www.npmjs.com/) and [nodemon](https://www.npmjs.com/package/nodemon) required):
+    - Without docker ([npm](https://www.npmjs.com/) required, [nodemon](https://www.npmjs.com/package/nodemon) will require installation if isn't installed yet):
         ```sh
         npm run start:dev
         ```
     - With docker (only [docker](https://www.docker.com/) required): <br>
-      *if you want to live deploy you need to open the container inside your editor or changes will not count* <br>
+      *If you want to live deploy you need to open the container inside your editor or changes will not count* <br>
       ```sh
       docker build . --rm -t eduardoapi/app
       docker run --init eduardoapi/app start:dev
       ```
 
-## Endpoint and functions
+## Endpoint and Functions
 
 ### Endpoint
 
@@ -77,7 +77,7 @@ Any other endpoints will give user a default endpoint error message.
     `phoneNumber` - request author's phone number.<br>
     `birthLocal` - request author's birth local.<br>
     `timezone` - request author's current author's timezone.<br>
-    `knowledgeRoll` - request author's knowledge rolls (languages and some technologies).<br>
+    `knowledgeRoll` - request author's knowledge roll (languages and some technologies).<br>
     `all` - request all author's data.<br>
     `<empty>` - empty queries will fallback to default (all).
 
