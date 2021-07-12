@@ -14,5 +14,8 @@
         "myapi"
     ],
     "author": "Eduardo Freitas de Carvalho",
-    "license": "MIT"
+    "license": "MIT",
+    "devDependencies": {
+        "nodemon": "^2.0.12"
+    }
 }

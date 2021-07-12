@@ -1,0 +1,19 @@
+# Ignore all files
+* 
+
+# Allowed extensions
+!*.js
+!*.json
+!*.yml
+
+# Allow Dockerfile
+!Dockerfile
+
+# Allow .ignore files
+!.*ignore
+
+# Ignore node_modules folder
+node_modules/
+
+# Ignore package-lock
+package-lock.json
