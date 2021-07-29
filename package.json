@@ -17,5 +17,9 @@
     "license": "MIT",
     "devDependencies": {
         "nodemon": "^2.0.12"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/edufcarvalho/eduardoapi.git"
     }
 }
