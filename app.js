@@ -27,7 +27,7 @@ http.createServer((request, response) => {
     const params = new URLSearchParams(request.url);
 
     /* ignoring favicon requests, maybe I will create a Express.js 
-    version that set one server-favicon or find out a way to handle it */
+    version that set a server-favicon or find out a way to handle it */
     if (params.has('/favicon.ico')) {
         response.end();
         return;
