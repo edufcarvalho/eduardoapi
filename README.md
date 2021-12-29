@@ -9,7 +9,7 @@ This is a **dead simple web server** that uses only node [HTTP](https://nodejs.o
 
 ## Set up the server
 
-Before cloning, inside the project directory:
+After cloning, inside the project directory:
 
 - Simple set up:
 
