@@ -44,39 +44,39 @@ http.createServer((request, response) => {
             data: {}
         };
 
-        if (params.has('/api')) {
-            if (params.has('query')) {
-                const query = params.get('query');
-
-                /* If query is empty or all, return default value (all data output) */
-                if (query == '' || query == 'all') {
-                    output.data = eduardo;
-                } else {
-                    /* iterate through all passed queries searching for invalid keys,
-                    if a key is invalid, send user a error message in the form of a JSON*/
-                    for (const key of query.split(',')) {
-                        if (eduardo.hasOwnProperty(key)) {
-                            output.data[key] = eduardo[key];
-                        } else {
-                            throw new BadRequest(
-                                (code = 202),
-                                (type = 'invalid_query'),
-                                (info = `Invalid query provided. Valid queries: ${Object.keys(
-                                    eduardo
-                                ).join()}`)
-                            );
-                        }
-                    }
-                }
-            } else {
-                output.data = eduardo;
-            }
-        } else {
+        if (!params.has('/api')) {
             throw new BadRequest(
                 (code = 202),
                 (type = 'invalid_endpoint'),
                 (info = 'Invalid endpoint used. Consult documentation for further information.')
             );
+        }
+
+        if (!params.has('query')) {
+            output.data = eduardo;
+        } else {
+            const query = params.get('query');
+
+            /* If query is empty or all, return default value (all data output) */
+            if (query == '' || query == 'all') {
+                output.data = eduardo;
+            } else {
+                /* iterate through all passed queries searching for invalid keys,
+                if a key is invalid, send user a error message in the form of a JSON*/
+                for (const key of query.split(',')) {
+                    if (!eduardo.hasOwnProperty(key)) {
+                        throw new BadRequest(
+                            (code = 202),
+                            (type = 'invalid_query'),
+                            (info = `Invalid query provided. Valid queries: ${Object.keys(
+                                eduardo
+                            ).join()}`)
+                        );
+                    }
+                    
+                    output.data[key] = eduardo[key];
+                }
+            }
         }
 
         response.write(JSON.stringify(output, null, beautify));
